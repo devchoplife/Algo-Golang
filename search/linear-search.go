@@ -1,8 +1,8 @@
-package main
+package search
 
-import "fmt"
+import "errors"
 
-const ErrNotFound = "Search Query is not contained in the source"
+var ErrNotFound = errors.New("The query is not found in the sequence")
 
 func Linear(array []int, query int) (int, error) {
 	for i, item := range array {
@@ -10,5 +10,5 @@ func Linear(array []int, query int) (int, error) {
 			return i, nil
 		}
 	}
-	return -1, fmt.Errorf(ErrNotFound)
+	return -1, ErrNotFound
 }
